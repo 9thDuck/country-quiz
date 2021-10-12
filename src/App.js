@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
+import { data } from "./data"; // fetch result output for just in case
 
 const App = () => {
   ////////////////////////////////////////////////////////////////////////////
   //////////////////////////  STATES  ////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////
 
-  const [allCountries, setAllCountries] = useState([]);
+  const [allCountries, setAllCountries] = useState(data);
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [options, setOptions] = useState([]);
@@ -16,60 +17,44 @@ const App = () => {
   //////////////////////////  FUNCTIONS  /////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////
 
-  // fetching countries json, and then selecting 20 countries out of all the countries.
-  const getData = async () => {
-    try {
-      const response = await fetch(
-        "http://api.countrylayer.com/v2/all?access_key=0413fc1849bd3a0140fa8f1f40dbb00a"
-      );
-      const data = await response.json();
-      const selectedCountriesTemp = [];
-      for (let i = 0; i < 20; i++) {
-        const randomIndex = Math.floor(Math.random() * data.length);
-        const country = data[randomIndex];
-        selectedCountriesTemp.push(country);
-      }
-      // setting the list of all countries to the state
-      setAllCountries(data);
-      setSelectedCountries(selectedCountriesTemp);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const makeQuestions = () => {
     const questionsTemp = [];
     selectedCountries.forEach((country) => {
       const randomNumber = Math.floor(Math.random() * 20);
-      const { name, callingCode, capital, region } = country;
+      const { name, capital } = country;
+
       switch (randomNumber) {
         case 1:
-          optionsList(name);
+          optionsList("name");
           questionsTemp.push({
             question: `${capital} is the capital of...`,
             options,
           });
+          setOptions([]);
           break;
         case 2:
-          optionsList(callingCode);
+          optionsList("callingCode");
           questionsTemp.push({
             question: `Which is the calling code of ${name}`,
             options,
           });
+          setOptions([]);
           break;
         case 3:
-          optionsList(name);
+          optionsList("name");
           questionsTemp.push({
             question: `Which country's capital is ${capital}?`,
             options,
           });
+          setOptions([]);
           break;
         case 4:
-          optionsList(region);
+          optionsList("region");
           questionsTemp.push({
             question: `${name} is situated in...`,
             options,
           });
+          setOptions([]);
           break;
       }
     });
@@ -81,17 +66,28 @@ const App = () => {
     const optionsTemp = [];
     while (optionsTemp.length < 5) {
       const randomIndex = Math.floor(Math.random() * allCountries.length);
-      const optionParent = allCountries[randomIndex];
-      console.log(optionParent);
-      optionsTemp.push(optionParent.param);
+      const optionObj = allCountries[randomIndex];
+      optionsTemp.push(optionObj[param]);
     }
+    setOptions(optionsTemp);
   };
 
   useEffect(() => {
-    getData();
+    const selectedCountriesTemp = [];
+    for (let i = 0; i < 20; i++) {
+      const randomIndex = Math.floor(Math.random() * data.length);
+      const country = allCountries[randomIndex];
+      selectedCountriesTemp.push(country);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    ////////////////////////// Problem /////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    console.log(selectedCountriesTemp); // This is an array of 20 objects
+    setSelectedCountries(selectedCountriesTemp); // I try to update the state here but it doesn't get updated. Why?
+    console.log(selectedCountries); // This returns an empty array
     makeQuestions();
     setLoading(false);
-    console.log(questions);
   }, []);
 
   ////////////////////////////////////////////////////////////////////////////
