@@ -7,7 +7,7 @@ const App = () => {
   ////////////////////////////////////////////////////////////////////////////
   //////////////////////////  STATES  ////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////
-const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [allCountries, setAllCountries] = useState(data);
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [options, setOptions] = useState([]);
@@ -18,7 +18,7 @@ const [loading, setLoading] = useState(true);
   //////////////////////////  FUNCTIONS  /////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////
 
-const makeQuestions = () => {
+  const makeQuestions = () => {
     const questionsTemp = [];
     selectedCountries.forEach((country, index) => {
       const randomNumber = Math.round(Math.random() * 4);
@@ -77,7 +77,6 @@ const makeQuestions = () => {
         : optionsTemp.push(optionObj[param]);
     }
     setOptions(optionsTemp);
-    
   };
 
   useEffect(() => {
@@ -89,14 +88,9 @@ const makeQuestions = () => {
     }
 
     setSelectedCountries(selectedCountriesTemp);
-
-    setTimeout(() => {
-      makeQuestions();
-      setLoading(false);
-    }, 500);
+    makeQuestions();
+    setLoading(false);
   }, []);
-
-  
 
   const questionChanger = () => {
     console.log(currentQuestion);
