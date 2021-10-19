@@ -52,7 +52,6 @@ const Question = ({
     <article className="card question-card">
       <h1 className="title">Country Quiz</h1>
       <SvgAdventure />
-
       <div className="question-container">
         <h2>{question}</h2>
       </div>
