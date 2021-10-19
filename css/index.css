@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: url(./background.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 90vw;
+  height: 90vh;
+  max-width: 1179px;
+}
+
+form {
+  color: black;
+}
+
+main {
+  width: 100%;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,13 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 * {
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 body {
+  width: 100%;
+  height: 100%;
   background: url(./background.png);
   background-repeat: no-repeat;
-  background-position: center;
-  width: 90vw;
-  height: 90vh;
-  max-width: 1179px;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Poppins", sans-serif;
 }
+
+body main {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section {
+  position: relative;
+  width: 464px;
+  height: 515px;
+}
+
+section .question-card-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 500ms;
+  transition: 500ms;
+  -webkit-animation: ease-in;
+          animation: ease-in;
+}
+
+section .card,
+section .question-card {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 2rem;
+}
+
+section .card .title,
+section .question-card .title {
+  position: absolute;
+  top: -3rem;
+  left: 0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 54px;
+  text-transform: uppercase;
+  color: #f2f2f2;
+}
+
+section .card .question-svg,
+section .question-card .question-svg {
+  position: absolute;
+  top: -71px;
+  height: 100px;
+  right: -12px;
+}
+
+section .card .question-container,
+section .question-card .question-container {
+  width: 86%;
+}
+
+section .card .question-container h2,
+section .question-card .question-container h2 {
+  margin: 68px auto 32px 0;
+  color: #2f527b;
+}
+
+section .card .options-container,
+section .question-card .options-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+  width: 86%;
+  margin-bottom: 32px;
+}
+
+section .card .options-container button,
+section .question-card .options-container button {
+  width: 100%;
+  height: auto;
+  min-height: 56px;
+  border: 2px solid #6066d0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 0;
+  padding-left: 19px;
+  text-align: left;
+  color: #6066d0;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+section .card .options-container button .space,
+section .question-card .options-container button .space {
+  width: 46px;
+  height: 100%px;
+  pointer-events: none;
+}
+
+section .card .options-container button:hover,
+section .question-card .options-container button:hover {
+  background-color: #f9a826;
+  color: white;
+}
+
+section .card .options-container .wrong,
+section .question-card .options-container .wrong {
+  background-color: #ff3737d7;
+  color: white;
+}
+
+section .card .options-container .wrong:hover,
+section .question-card .options-container .wrong:hover {
+  background-color: #ff373798;
+  color: #222;
+  font-weight: 700;
+}
+
+section .card .options-container .right,
+section .question-card .options-container .right {
+  background-color: #5dff00;
+  color: black;
+}
+
+section .card .options-container .right:hover,
+section .question-card .options-container .right:hover {
+  background-color: #5eff00a6;
+  color: #222;
+  font-weight: 700;
+}
+
+section .active {
+  -webkit-transform: traslateX(0);
+          transform: traslateX(0);
+}
+
+section .upcoming {
+  -webkit-transform: translateX(100vw);
+          transform: translateX(100vw);
+}
+
+section .finished {
+  -webkit-transform: translateX(-100vw);
+          transform: translateX(-100vw);
+}
+
+article.results-container {
+  width: 100%;
+  height: 542px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+article.results-container .results-img-container {
+  position: relative;
+  width: 238px;
+  height: 136px;
+}
+
+article.results-container .results-img-container svg {
+  top: -5rem;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+article.results-container .results-title {
+  margin-top: 50px;
+}
+
+article.results-container .results-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 71px;
+}
+
+article.results-container .results-info h1 {
+  font-size: 48px;
+  color: #1d355d;
+}
+
+article.results-container .results-info .score-span {
+  display: inline;
+  font-size: 36px;
+  color: limegreen;
+}
+
+article.results-container button {
+  width: 209px;
+  height: 62px;
+  border-radius: 12px;
+  font-size: 18px;
+  background-color: transparent;
+  border: 2px solid #1d355d;
+  color: #1d355d;
+  -webkit-transition: 500ms;
+  transition: 500ms;
+}
+
+article.results-container button:hover {
+  background-color: #5eff00a6;
+  color: #222;
+}
+/*# sourceMappingURL=index.css.map */
