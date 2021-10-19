@@ -29,9 +29,10 @@ body {
 
 section {
   position: relative;
-  width: 464px;
-  height: 515px;
-
+  max-width: 464px;
+  width: 86vw;
+  min-height: 515px;
+  height: auto;
   .question-card-container {
     position: absolute;
     width: 100%;
@@ -194,5 +195,13 @@ article.results-container {
       background-color: #5eff00a6;
       color: #222;
     }
+  }
+}
+
+@media (max-width: 410px) {
+  .title {
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 }

@@ -42,8 +42,10 @@ body main {
 
 section {
   position: relative;
-  width: 464px;
-  height: 515px;
+  max-width: 464px;
+  width: 86vw;
+  min-height: 515px;
+  height: auto;
 }
 
 section .question-card-container {
@@ -271,5 +273,13 @@ article.results-container button {
 article.results-container button:hover {
   background-color: #5eff00a6;
   color: #222;
+}
+
+@media (max-width: 410px) {
+  .title {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 }
 /*# sourceMappingURL=index.css.map */

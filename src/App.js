@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { data } from "./data"; // replaced the fetch functionality with local data module
 import Question from "./Question";
 import { v4 as uuid } from "uuid";
-import { SvgWinners, SvgAdventure } from "./Svg";
+import { SvgAdventure } from "./Svg";
 
 const App = () => {
   ////////////////////////////////////////////////////////////////////////////
